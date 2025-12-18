@@ -1,0 +1,32 @@
+{
+  "label2id": {
+    "O": 0,
+    "B-PROBLEM": 1,
+    "I-PROBLEM": 2,
+    "E-PROBLEM": 3,
+    "S-PROBLEM": 4,
+    "B-TREATMENT": 5,
+    "I-TREATMENT": 6,
+    "E-TREATMENT": 7,
+    "S-TREATMENT": 8,
+    "B-TEST": 9,
+    "I-TEST": 10,
+    "E-TEST": 11,
+    "S-TEST": 12
+  },
+  "id2label": {
+    "0": "O",
+    "1": "B-PROBLEM",
+    "2": "I-PROBLEM",
+    "3": "E-PROBLEM",
+    "4": "S-PROBLEM",
+    "5": "B-TREATMENT",
+    "6": "I-TREATMENT",
+    "7": "E-TREATMENT",
+    "8": "S-TREATMENT",
+    "9": "B-TEST",
+    "10": "I-TEST",
+    "11": "E-TEST",
+    "12": "S-TEST"
+  }
+}
