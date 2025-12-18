@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+medical_ner/
+.vscode/
+.cache/
+hf_cache/
+mlruns/
+models/
+*.pt
+*.bin
