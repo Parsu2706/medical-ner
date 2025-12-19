@@ -3,6 +3,7 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+models/*.pt
 medical_ner/
 .vscode/
 .cache/
