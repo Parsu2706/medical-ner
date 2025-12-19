@@ -2,6 +2,8 @@ import json
 import os
 from typing import Dict, List
 
+from huggingface_hub import hf_hub_download
+from config import (pretrained_model,HF_REPO_ID,HF_LABEL_MAP_FILE,HF_TOKENIZER_REPO)
 import torch
 import random
 import numpy as np
@@ -18,9 +20,14 @@ def save_label_map(label2id: Dict[str, int], id2label: Dict[int, str]):
         json.dump(data, file, indent=2)
 
 def load_label_map():
-    with open(label_map_path, "r") as file:
+    path = hf_hub_download(
+        repo_id=HF_REPO_ID,
+        filename=HF_LABEL_MAP_FILE,
+    )
+    with open(path, "r") as file:
         data = json.load(file)
-    label2id = {k: int(v) if isinstance(v, str) else v for k, v in data["label2id"].items()}
+
+    label2id = data["label2id"]
     id2label = {int(k): v for k, v in data["id2label"].items()}
     return label2id, id2label
 
@@ -28,10 +35,9 @@ def save_tokenizer(tokenizer: AutoTokenizer):
     tokenizer.save_pretrained(tokenizer_path)
 
 def load_tokenizer():
-    if os.path.exists(tokenizer_path):
-        return AutoTokenizer.from_pretrained(tokenizer_path)
-    return AutoTokenizer.from_pretrained(pretrained_model)
-
+    return AutoTokenizer.from_pretrained(
+        HF_TOKENIZER_REPO or pretrained_model
+    )
 def get_device():
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

@@ -4,19 +4,17 @@ import torch
 
 from config import max_len, best_model_path
 from src.model import NERModel
-from src.utils import (
-    load_tokenizer,
-    load_label_map,
-    get_device,
-)
-
+from src.utils import (load_tokenizer,load_label_map,get_device)
+from huggingface_hub import hf_hub_download
+from config import HF_REPO_ID, HF_MODEL_FILE
 
 def load_pipeline():
     label2id, id2label = load_label_map()
     tokenizer = load_tokenizer()
     model = NERModel(num_labels=len(label2id), id2label=id2label, label2id=label2id)
     device = get_device()
-    model.load(best_model_path, map_location=device)
+    model_path = hf_hub_download(repo_id=HF_REPO_ID,filename=HF_MODEL_FILE)
+    model.load(model_path, map_location=device)
     model.to(device)
     model.eval()
     return model, tokenizer, label2id, id2label
