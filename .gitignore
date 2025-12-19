@@ -8,6 +8,5 @@ medical_ner/
 .cache/
 hf_cache/
 mlruns/
-models/
 *.pt
 *.bin
