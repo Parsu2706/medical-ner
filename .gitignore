@@ -11,4 +11,9 @@ hf_cache/
 mlruns/
 *.pt
 *.bin
-.env    
+.env
+mlruns/
+.cache/
+huggingface/
+.streamlit/secrets.toml
+__pycache__/   
